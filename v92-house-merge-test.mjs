@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {validateSwissHouses,mergeSwissHouses} from './src/life-blueprint-v92-houses.mjs';
+const h={jdUt:2461341.5,latitude:37.566,longitude:126.978,asc:295.4,mc:218.2,ic:38.2,dsc:115.4,houseSystem:'W',cusps:Array.from({length:12},(_,i)=>(270+i*30)%360)};
+assert.equal(validateSwissHouses(h,h.jdUt,h.latitude,h.longitude).asc,295.4);
+const natal={astro:{J0:h.jdUt,geoLat:h.latitude,geoLon:h.longitude,asc:290,mc:220,approx:false,planets:{}}};
+const applied=mergeSwissHouses(natal,h);
+assert.equal(applied.astro.asc,295.4);assert.equal(applied.astro.mc,218.2);assert.equal(applied.astro.angleSource,'swiss-houses');
+assert.equal(mergeSwissHouses({...natal,astro:{...natal.astro,approx:true}},h).astro.asc,290);
+assert.throws(()=>validateSwissHouses({...h,latitude:30},h.jdUt,h.latitude,h.longitude));
+assert.throws(()=>validateSwissHouses({...h,cusps:[...h.cusps.slice(0,1),35,...h.cusps.slice(2)]},h.jdUt,h.latitude,h.longitude));
+console.log('PASS: Swiss house response, merge, unknown time and mismatch guards');

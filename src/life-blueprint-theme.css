@@ -1,0 +1,76 @@
+/* v79: Tailwind v4의 테마/유틸리티만 사용해 기존 JSX의 전역 리셋을 피한다. */
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap');
+
+/* 변경: 색상·폰트·여백을 토큰으로 통합해 향후 테마를 쉽게 바꾼다. */
+:root {
+  --lb-bg: #F7F4EE;
+  --lb-surface: #FFFFFF;
+  --lb-ink: #29332E;
+  --lb-muted: #58675F;
+  --lb-primary: #587568;
+  --lb-primary-soft: #E9F0EA;
+  --lb-gold: #D9C4A7;
+  --lb-border: #DCE3DB;
+  --lb-radius: 18px;
+  --lb-space: 8px;
+  --lb-font-heading: 'Noto Serif KR','Song Myung',serif;
+  --lb-font-body: 'Pretendard','Gothic A1','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+}
+
+/* 변경: 컨테이너를 부드러운 크림 톤으로 통일해 상담 화면의 시각적 긴장을 줄인다. */
+.lb-app-shell { background: var(--lb-bg) !important; color:var(--lb-ink) !important; font-family:var(--lb-font-body) !important; padding: 12px 10px 32px !important; }
+.lb-sheet { background: var(--lb-bg) !important; max-width: 540px !important; padding: 20px 16px 56px !important; border-radius: 22px !important; box-shadow: 0 8px 28px rgba(41,51,46,.075) !important; }
+
+/* 변경: 영문 라벨-제목-부제목을 분리하고 제목은 한국어 세리프를 사용한다. */
+.lb-header { text-align: left !important; border-bottom: 1px solid var(--lb-border) !important; padding: 4px 2px 22px !important; margin-bottom: 18px !important; }
+.lb-header > div > p { color: var(--lb-muted) !important; font-size: 11px !important; letter-spacing: .15em !important; }
+.lb-header h1 { font-family: var(--lb-font-heading) !important; font-size: 32px !important; font-weight: 600 !important; letter-spacing: -.045em !important; line-height: 1.35 !important; margin: 10px 0 10px !important; color: var(--lb-ink) !important; }
+.lb-header > p { font-size: 14px !important; line-height: 1.7 !important; color:var(--lb-muted) !important; word-break:keep-all !important; }
+
+/* 변경: 검은 진행 바를 밝은 가로 스크롤 내비게이션으로 바꾸고 터치 영역을 44px 확보한다. */
+.lb-sheet .lb-stepnav { top: 0; z-index: 20; padding: 10px 0 12px !important; margin: 0 0 18px !important; gap: 8px !important; background: var(--lb-bg) !important; border-bottom: 1px solid var(--lb-border); scroll-padding-inline: 12px; }
+.lb-sheet .lb-stepnav button { min-height: 44px !important; padding: 0 14px !important; border-radius: 14px !important; border: 1px solid var(--lb-border) !important; background: var(--lb-surface) !important; color:var(--lb-ink) !important; font-size: 13px !important; font-weight:600; }
+.lb-sheet .lb-stepnav b { color:var(--lb-primary) !important; font-family:var(--lb-font-body) !important; font-size: 13px !important; font-weight:700 !important; }
+.lb-sheet .lb-stepnav button:focus-visible { outline:3px solid var(--lb-primary) !important; outline-offset:2px; }
+.lb-sheet .lb-stepnav i { width:7px !important; height:7px !important; opacity:.65; }
+
+/* 변경: 탭을 가로 스크롤 형태로 정돈하고 현재 선택을 세이지 컬러로 분명하게 표현한다. */
+.lb-sheet .lb-primary-tabs { display:flex !important; flex-wrap:nowrap !important; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; gap:8px !important; padding: 2px 0 12px; margin-bottom: 18px !important; }
+.lb-sheet .lb-primary-tabs::-webkit-scrollbar { display:none; }
+.lb-sheet .lb-primary-tabs .ghost { flex: 0 0 auto; min-height: 44px !important; margin-left:0 !important; padding: 0 15px !important; border-radius: 13px !important; font-size:13px !important; font-weight:600; color:var(--lb-muted) !important; background:#fff !important; border:1px solid var(--lb-border) !important; }
+.lb-sheet .lb-primary-tabs .ghost.on { background:var(--lb-primary-soft) !important; color:var(--lb-ink) !important; border-color:var(--lb-primary) !important; }
+.lb-sheet .lb-primary-tabs .ghost:focus-visible { outline:3px solid var(--lb-primary); outline-offset:2px; }
+
+/* 변경: 입력 카드/라벨/필드의 대비와 여백을 강화하고 모바일을 한 열로 고정한다. */
+.lb-sheet .lb-form-card { background:var(--lb-surface) !important; border:1px solid var(--lb-border) !important; border-radius:var(--lb-radius) !important; padding:20px 18px !important; margin-bottom:18px !important; box-shadow:0 4px 18px rgba(41,51,46,.045) !important; }
+.lb-sheet .lb-form-card > p:first-child { font-size:14px !important; letter-spacing:.04em !important; font-weight:700 !important; color:var(--lb-primary) !important; margin:0 0 20px !important; }
+.lb-sheet .lb-form-grid { display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:18px !important; }
+.lb-sheet .lb-form-card label { display:block; color:var(--lb-ink) !important; font-size:13px !important; font-weight:650 !important; letter-spacing:0 !important; line-height:1.45 !important; }
+.lb-sheet .lb-form-card input,
+.lb-sheet .lb-form-card select { min-height:48px !important; border:1px solid var(--lb-border) !important; background:#fff !important; border-radius:12px !important; color:var(--lb-ink) !important; font:500 16px/1.4 var(--lb-font-body) !important; padding:10px 13px !important; margin-top:8px !important; }
+.lb-sheet .lb-form-card input:focus-visible,.lb-sheet .lb-form-card select:focus-visible { outline:2px solid var(--lb-primary) !important; outline-offset:1px; }
+.lb-sheet .lb-form-card button { min-height:44px !important; font-size:13px !important; border-radius:11px !important; }
+.lb-sheet .lb-form-card button:focus-visible { outline:2px solid var(--lb-primary); outline-offset:2px; }
+.lb-sheet .lb-form-card .lb-form-grid > div { grid-column:1/-1 !important; }
+.lb-sheet .lb-form-card .lb-form-grid > div > div[style*="display:flex"] { flex-wrap:wrap; }
+
+@media (min-width: 640px) {
+  .lb-sheet { padding: 28px 26px 64px !important; }
+  .lb-sheet .lb-form-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important; }
+  .lb-sheet .lb-form-grid > div { grid-column:auto !important; }
+  .lb-sheet .lb-form-grid > div[style*="grid-column: 1 / -1"] { grid-column:1/-1 !important; }
+}
+
+/* 변경: 인쇄 시 버튼·장식·배경을 제거하고 입력 정보를 읽기 쉬운 흑백 문서로 바꾼다. */
+@media print {
+  :root { --lb-bg:#fff; --lb-primary:#29332E; --lb-border:#D8D8D8; }
+  html,body,.lb-app-shell,.lb-sheet { background:#fff !important; color:#111 !important; box-shadow:none !important; padding:0 !important; border-radius:0 !important; }
+  .lb-header { padding-bottom:10px !important; }
+  .lb-header h1 {font-size:22pt !important;}
+  .lb-stepnav,.lb-primary-tabs {display:none !important;}
+  .lb-form-card {background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important; break-inside:avoid;}
+  .lb-form-card input,.lb-form-card select {border-color:#aaa !important; color:#111 !important;}
+  .lb-form-card button {display:none !important;}
+}

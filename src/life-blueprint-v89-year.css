@@ -1,0 +1,120 @@
+
+/* v89 — 해년의수: 모바일 왼쪽 정렬, 명확한 제목 계층, 선명한 강조 */
+.lb-v89-year, .lb-v89-year * { text-align: left !important; }
+.lb-v89-year summary { font-weight: 800 !important; line-height: 1.5; }
+.lb-v89-year summary b { font-weight: 800 !important; }
+.lb-v89-year details details > summary { color:#175CD3 !important; background:#EFF6FF; border-radius:8px; }
+.lb-v89-year .lb-v89-five-year { align-items:stretch; }
+.lb-v89-year .lb-v89-five-year > div { align-items:center !important; justify-content:center !important; text-align:center !important; width:100%; height:100%; min-height:96px; box-sizing:border-box; padding:9px 4px !important; }
+.lb-v89-year .lb-v89-five-year span { display:block; width:100%; text-align:center !important; font-weight:750; }
+.lb-v89-year .lb-v89-five-year span:nth-child(3) { display:grid !important; align-content:center; min-height:2.6em; white-space:normal; word-break:keep-all; overflow-wrap:break-word; line-height:1.3; }
+.lb-v89-year .lb-v89-five-year span:nth-child(2) { color:#175CD3 !important; }
+.lb-v89-year .lb-v89-status { font-size:12.5px; font-weight:700; line-height:1.6; padding:10px 12px; color:#175CD3; background:#EFF6FF; border-left:4px solid #175CD3; border-radius:6px; }
+.lb-v89-year details p b { font-weight:800 !important; }
+.lb-v89-year details > summary > b:first-child { color:#175CD3 !important; font-size:17px; }
+.lb-v89-year details details > div > div > b { display:block; font-size:14.5px; font-weight:850; color:#B42318; margin-bottom:4px; }
+.lb-v89-year details p { line-height:1.7; }
+@media(max-width:420px){.lb-v89-year .lb-v89-five-year { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }}
+
+/* 해년의수 제목·본문·연도 상세는 왼쪽. 네모 연도 카드만 위 규칙으로 가운데. */
+.lb-v89-year .lb-v89-heading {display:block; width:100%; text-align:left !important;}
+.lb-v89-year .lb-v89-heading .sec-h {display:flex !important; justify-content:flex-start !important; align-items:baseline; width:100%; text-align:left !important;}
+.lb-v89-year .lb-v89-heading .sec-h .sec-n,
+.lb-v89-year .lb-v89-heading .sec-h .sec-t {text-align:left !important; font-weight:800 !important;}
+
+/* 1·3·4·5 분석 문장만. #root의 text-align:center보다 우선하고, 전역 h2/p/div에는 적용하지 않는다. */
+.lb-sec-copy,
+.lb-sec-copy p,
+.lb-sec-copy summary,
+.lb-sec-copy [data-card],
+.lb-sec-copy .lb-house-panel,
+.lb-sec-copy .lb-house-panel div,
+.lb-sec-copy .lb-house-selector,
+.lb-sec-copy .lb-house-selector p {
+  text-align: left !important;
+}
+.lb-sec-copy .sec-h { display:flex !important; justify-content:flex-start !important; align-items:baseline; width:100%; text-align:left !important; }
+.lb-sec-copy .sec-n,
+.lb-sec-copy .sec-t { text-align:left !important; }
+.lb-sec-copy .lb-elem-bars,
+.lb-sec-copy .lb-elem-bars p,
+.lb-sec-copy .lb-elem-bars div { text-align:center !important; }
+.lb-house-panel,
+.lb-house-panel p,
+.lb-house-panel div,
+.lb-house-selector,
+.lb-house-selector p { text-align:left !important; }
+.lb-v91-aspects,
+.lb-v91-aspects p,
+.lb-v91-aspects [data-card] { text-align:left !important; }
+.lb-v91-aspects button { text-align:center !important; }
+
+/* 하우스 선택: 화면에서는 선택 항목만, 인쇄 시에는 전체 12하우스 출력 */
+@media print { .lb-house-selector { display:none !important; } .lb-house-panel { display:block !important; break-inside:avoid; } }
+
+/* 6·7·9 상담 본문만. 1~5, 해년의수 카드, 8번 조언에는 적용하지 않는다. */
+.lb-sec679,
+.lb-sec679 p,
+.lb-sec679 h2,
+.lb-sec679 h3,
+.lb-sec679 summary,
+.lb-sec679 div,
+.lb-sec679 span,
+.lb-sec679 li {
+  text-align: left !important;
+}
+.lb-sec679 .sec-h {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: baseline !important;
+  width: 100%;
+  text-align: left !important;
+  margin-bottom: 10px;
+}
+.lb-sec679 .sec-n,
+.lb-sec679 .sec-t {
+  text-align: left !important;
+  font-weight: 800 !important;
+}
+.lb-sec679 .sec-t { font-size: 20px !important; line-height: 1.4 !important; }
+.lb-sec679 .lb-topic {
+  margin: 0 0 8px;
+  font-family: var(--fd);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #175CD3;
+}
+.lb-sec679 .lb-sub {
+  margin: 11px 0 6px;
+  font-size: 15.5px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+.lb-sec679 .lb-body,
+.lb-sec679 .lb-note {
+  margin: 0 0 6px;
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: #3E4652;
+}
+.lb-sec679 [data-card] {
+  padding: 12px 14px !important;
+  margin-bottom: 8px !important;
+}
+.lb-sec679 .lb-fold { margin-top: 4px; }
+.lb-sec679 .lb-fold > summary {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #175CD3;
+  cursor: pointer;
+}
+.lb-sec679 .lb-gauge,
+.lb-sec679 .lb-gauge p,
+.lb-sec679 .lb-gauge div,
+.lb-sec679 .lb-gauge span {
+  text-align: center !important;
+}
+.lb-crisis p { font-size: 13.5px !important; line-height: 1.72 !important; }
+.lb-crisis .sec-t { font-size: 20px !important; }
+.lb-crisis .lb-sub { font-size: 15.5px !important; line-height: 1.45 !important; }
